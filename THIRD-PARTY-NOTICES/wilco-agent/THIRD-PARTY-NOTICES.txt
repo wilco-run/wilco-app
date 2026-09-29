@@ -1,0 +1,5 @@
+Wilco coding agent is derived from pi (MIT), by Mario Zechner and pi contributors.
+Upstream: https://github.com/earendil-works/pi
+The complete upstream license is preserved in LICENSE.
+Bundled search tool attribution is in bin/THIRD-PARTY.txt and bin/LICENSE-*.
+Wilco skills are original project-owned instructions; no personal skill directories are copied.
