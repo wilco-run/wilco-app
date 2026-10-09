@@ -1,4 +1,4 @@
-Third-party license notices for the Wilco desktop app 0.1.1 (v0.1.1-test.20261009.1).
+Third-party license notices for the Wilco desktop app 0.1.2 (v0.1.2-test.20261009.1).
 
 electron/     Electron 44.3.0, the application framework (LICENSE), and the licenses of Chromium
               and the software it includes (LICENSES.chromium.html), as shipped with Electron.
