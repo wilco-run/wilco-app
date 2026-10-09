@@ -1,13 +1,13 @@
-# Wilco for Mac (test builds)
+# Wilco desktop app (test builds)
 
-Test builds of the Wilco desktop app for macOS. Install and update Wilco from
-[wilco.run](https://wilco.run) with the command below. This repository is the archive of every test
+Test builds of the Wilco desktop app for macOS and Windows. Install and update Wilco from
+[wilco.run](https://wilco.run) with the commands below (Windows: see [Windows](#windows)). This repository is the archive of every test
 build: each one is kept under [Releases](https://github.com/wilco-run/wilco-app/releases)
 with its install script and checksums, and the repository itself holds only the install script and
 third-party license notices.
 
-These are test builds: they are not signed with an Apple Developer ID and not notarized. Expect rough
-edges.
+These are test builds: the Mac builds are not signed with an Apple Developer ID and not notarized, and
+the Windows builds are not signed with a code signing certificate. Expect rough edges.
 
 ## Requirements
 
@@ -75,6 +75,40 @@ curl -fsSL https://wilco.run/download/app/install.sh | bash -s -- --uninstall
 
 This removes the app only. Your settings, sessions and sign-in are kept; the command prints where they
 are and how to remove them.
+
+## Windows
+
+Needs 64-bit Windows 10 or 11 and a Wilco account. In PowerShell (not as administrator):
+
+```powershell
+irm https://wilco.run/download/app/install.ps1 | iex
+```
+
+The script downloads the current installer from wilco.run (`Wilco-<version>-<build>-win-x64.exe`),
+checks its SHA-256 checksum against `SHA256SUMS` and runs it. Wilco is installed for your Windows account
+only (no administrator rights), with Start menu and desktop shortcuts, and opens when it is done. If
+Wilco is running, it is asked to close first; your sessions and settings are kept.
+
+Wilco checks wilco.run for new test builds; click Update, then Restart now, and it installs the new build
+itself and opens again.
+
+The installer is not signed yet. A copy downloaded with a web browser makes Windows show "Windows
+protected your PC" (choose More info, then Run anyway); the PowerShell command above does not. On a PC
+with Smart App Control turned on, Windows does not run unsigned apps, so Wilco cannot be used there yet.
+
+An earlier build, by its release tag:
+
+```powershell
+& ([scriptblock]::Create((irm https://wilco.run/download/app/install.ps1))) -Version <tag>
+```
+
+Uninstall with Settings > Apps > Installed apps, or:
+
+```powershell
+& ([scriptblock]::Create((irm https://wilco.run/download/app/install.ps1))) -Uninstall
+```
+
+This removes the app only; `%APPDATA%\Wilco` and `%USERPROFILE%\.wilco` are kept.
 
 ## Support
 
